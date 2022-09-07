@@ -1,5 +1,5 @@
 # Example action that shows a workflow using the ORCA CLI tool as part of a pipeline.
-# This will build a container from a Dockerfile within a source repo.
+# This will build a container from a Dockerfile within a source repo. 
 # Environment variables required:
 #    GITHUB_TOKEN: This is the token that you need to access the github container repository. It needs to be set as a secret within the environment section of the repo.
 #    ORCA_API_KEY: This is the API token from the ORCA platform that is needed to run the CLI tool. This also needs to be set within the environment section of the repository.
