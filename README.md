@@ -17,7 +17,7 @@ You can either use this template or fork the repo. Benefit of forking the repo i
 
 1. Click **Use this template**
    
-    <img src="https://github.com/kinners00/web_app/raw/main/assets/use_this_template.png" alt="Employee data" width="250" height="48" title="use_this_template">
+    <img src="https://github.com/kinners00/web_app/raw/main/assets/use_this_template.png" alt="Employee data" size="60%" title="use_this_template">
 
 
 1. Fill in information as appropriate but ensure you choose **Copy all branches**
