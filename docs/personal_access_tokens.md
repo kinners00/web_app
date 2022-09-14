@@ -6,9 +6,10 @@ It's recommended that you use ```GITHUB_TOKEN``` rather than PAT tokens as it of
       - **Note:** orcacli
       - **Expiration:** (choose something with a moderate expiry date if using for demos)
       - **Scopes/permissions:**
-        - repo (all sub scopes)
-        - write:packages
-          - read:packages 
+       - repo (all sub scopes)
+       - write:packages
+        - read:packages
+       - delete:packages  
 
 
         <img src="https://github.com/kinners00/web_app/raw/main/assets/personal_access_token.png" alt="Employee data" width="70%" height="70%" title="use_this_template">
