@@ -10,6 +10,9 @@
       3. **Scopes/permissions:**
         - repo
         - write:packages
+
+        <img src="https://github.com/kinners00/web_app/raw/main/assets/pat.png" alt="Employee data" width="60%" height="60%" title="use_this_template">
+
    3. Click **Generate token**
 
 ### Use template or fork template
