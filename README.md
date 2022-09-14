@@ -17,9 +17,9 @@ You can either use this template or fork the repo. Benefit of forking the repo i
 
 1. Click **Use this template**
    
-   ![use_this_template](https://github.com/kinners00/web_app/raw/main/assets/use_this_template.png)
+   ![use_this_template](https://github.com/kinners00/web_app/raw/main/assets/use_this_template.png){:height="300px" width="300px"}
 
 2. Fill in information as appropriate but ensure you choose **Copy all branches**
  
-    ![copy_all_branches](https://github.com/kinners00/web_app/raw/main/assets/include_all_branches.png) 
+    ![copy_all_branches](https://github.com/kinners00/web_app/raw/main/assets/include_all_branches.png){:height="300px" width="300px"} 
 
