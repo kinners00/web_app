@@ -12,11 +12,13 @@ name: Orca container image scanning example
 
 on:
   push:
-    branches: ['latest']
+    branches: ['test']
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  PROJECT_KEY: image_scan_demo
+  CLI_VERSION: latest
 
 jobs:
 
@@ -64,12 +66,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        
+      - name: Build Container Image
+        run: docker build --tag ${IMAGE_NAME} .
   
-      - name: Run security scan
+      - name: Orca Image Security Scan
+        id: run_orca_cli
+        env:
+          ORCA_SECURITY_API_TOKEN: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
         run: |
-          docker build --tag ${{ github.repository }} .
-          docker images
-          docker run -u 0 --rm -t -v /var/run/docker.sock:/var/run/docker.sock -t ghcr.io/orcasecurity/orca-cli:1.3.0 --api-token aHR0cHM6Ly9hcHAuZXUub3JjYXNlY3VyaXR5LmlvfHxEeE1GdlE5b25hWGZBTTdHdnRUSFU3UTdqYTJ6UXpoVw== --project-key image_scan_demo image scan ${{ github.repository }}
+          set +e
+          chmod 666 /var/run/docker.sock
+          curl -sfL 'https://raw.githubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash
+          orca-cli -p ${PROJECT_KEY} image scan ${IMAGE_NAME}
+        # docker run -u 0 --rm -t -v /var/run/docker.sock:/var/run/docker.sock -t ghcr.io/orcasecurity/orca-cli:1.3.0 --api-token aHR0cHM6Ly9hcHAuZXUub3JjYXNlY3VyaXR5LmlvfHxEeE1GdlE5b25hWGZBTTdHdnRUSFU3UTdqYTJ6UXpoVw== --project-key image_scan_demo image scan ${{ github.repository }}
         #continue-on-error: true  
 
   push-to-registry:
