@@ -12,7 +12,11 @@ name: Orca container image scanning example
 
 on:
   push:
-    branches: ['test']
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
