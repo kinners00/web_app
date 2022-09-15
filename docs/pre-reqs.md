@@ -1,14 +1,17 @@
 ## Pre-reqs:
 
-### Use template or fork template
-You can either use this template or fork the repo. Benefit of forking the repo is that you can easily pull new changes from this the repo. The for steps for each are similar.
+### Fork this repo 
 
-1. Click **Use this template**
+1. On the top right, Click **Fork** then fill in the relevant info.
    
-    <img src="https://github.com/kinners00/web_app/raw/main/assets/use_this_template.png" alt="Employee data" width="60%" height="60%" title="use_this_template">
+### Add Orca CLI token to repo as a secret
 
+1. From the forked copy of this repo, navigate to the **Settings** tab > **Secrets** > **Actions**
+2. Click **New repository secret**
+3. Name the secret ```ORCA_SECURITY_API_TOKEN``` and add the contents of your Orca CLI token.
 
-1. Fill in information as appropriate but ensure you choose **Include all branches**
- 
-    <img src="https://github.com/kinners00/web_app/raw/main/assets/include_all_branches.png" alt="Employee data" width="60%" height="60%"  title="copy_all_branches">
+### Add your own project key to the github actions template
 
+1. Navigate to the github actions template in the repo: ```.github/workflows/container_image_scanning.yml``` 
+2. On line 24, add your target Project Key.
+   <img src="https://github.com/kinners00/web_app/raw/main/assets/project_key.png" alt="Employee data" width="70%" height="70%" title="personal_access_token">
