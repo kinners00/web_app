@@ -16,4 +16,4 @@
 2. On line 24, add your target Project Key.
 
 
-   <img src="https://github.com/kinners00/web_app/raw/main/assets/project_key.png" alt="Employee data" width="70%" height="70%" title="personal_access_token">
+   <img src="https://github.com/kinners00/web_app/raw/main/assets/project_key.png" alt="Employee data" width="50%" height="50%" title="personal_access_token">
