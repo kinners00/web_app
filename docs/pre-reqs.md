@@ -14,4 +14,6 @@
 
 1. Navigate to the github actions template in the repo: ```.github/workflows/container_image_scanning.yml``` 
 2. On line 24, add your target Project Key.
+
+
    <img src="https://github.com/kinners00/web_app/raw/main/assets/project_key.png" alt="Employee data" width="70%" height="70%" title="personal_access_token">
