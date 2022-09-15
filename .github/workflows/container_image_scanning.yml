@@ -77,7 +77,7 @@ jobs:
       - name: Orca Image Security Scan
         id: run_orca_cli
         run: |
-          docker run -u 0 --rm -t -v /var/run/docker.sock:/var/run/docker.sock -t ghcr.io/orcasecurity/orca-cli:${CLI_VERSION} --api-token ${ORCA_SECURITY_API_TOKEN} --project-key ${PROJECT_KEY} image scan ${IMAGE_NAME}
+          docker run -u 0 --rm -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/orcasecurity/orca-cli:${CLI_VERSION} --api-token ${ORCA_SECURITY_API_TOKEN} --project-key ${PROJECT_KEY} image scan ${IMAGE_NAME}
         #continue-on-error: true  
 
   push-to-registry:
