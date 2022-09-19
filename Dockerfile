@@ -2,4 +2,4 @@ FROM nginx:latest
 
 USER demotest
 
-CMD ["sh"]
+RUN echo 'Hello World!'
