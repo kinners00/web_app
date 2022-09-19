@@ -1,5 +1,5 @@
 FROM nginx:latest
 
-USER demotest
+USER demo
 
 CMD ["sh"]
