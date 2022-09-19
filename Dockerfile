@@ -1,7 +1,5 @@
 FROM nginx:latest
 
-RUN useradd -ms /bin/bash demotest
-usermod -aG sudo demotest
-
-USER demotest
-WORKDIR /home/demotest
+RUN useradd -rm -d /home/demo -s /bin/bash -g root -G sudo -u 1001 demo
+USER demo
+WORKDIR /home/demo
