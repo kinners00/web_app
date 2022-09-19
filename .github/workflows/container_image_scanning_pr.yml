@@ -13,7 +13,7 @@ name: Orca container image scanning PR check
 on:
   pull_request:
     branches: 
-      - main
+      - latest
 
 env:
   REGISTRY: ghcr.io
