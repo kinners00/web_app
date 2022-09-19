@@ -1,6 +1,10 @@
 FROM nginx:latest
 
-RUN useradd -m docker && echo "demo:demo" | chpasswd && adduser demo sudo
+RUN apt-get update
+
+RUN adduser --disabled-password --gecos '' demo
+RUN adduser demo sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER demo
-CMD /bin/bash
+RUN echo 'Hello World!'
