@@ -1,5 +1,5 @@
 FROM nginx:latest
 
-USER demotest
+USER demotest:demo
 
 RUN echo 'Hello World!'
