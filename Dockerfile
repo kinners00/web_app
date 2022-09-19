@@ -1,5 +1,7 @@
 FROM nginx:latest
 
-USER demotest:demo
+RUN useradd -ms /bin/bash  demotest
+
+USER demotest
 
 RUN echo 'Hello World!'
