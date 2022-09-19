@@ -1,9 +1,13 @@
 ## Shift left - Container image scanning demo
 
 ## Pre-reqs
+### Technical
 1. Before getting started, follow the pre-reqs [here](https://github.com/kinners00/web_app/blob/main/docs/pre-reqs.md) neccessary to setup this environment in your own github account
 
-2. To better understand the demo and workflow, it's recommended that you review the [git workflow doc](https://github.com/kinners00/web_app/blob/main/docs/git_workflow_overview.md).
+### Knowledge based
+1. To better understand the demo and workflow, it's recommended that you review the [git workflow doc](https://github.com/kinners00/web_app/blob/main/docs/git_workflow_overview.md).
+
+
 
 ## Demo
 You can run this demo in your own IDE such as VSCode but if this demo for a security team/management level, it may make sense to stick with the GUI to keep things clear and easy to understand.
