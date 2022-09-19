@@ -1,0 +1,77 @@
+# Example action that shows a workflow using the ORCA CLI tool as part of a pipeline.
+# This will build a container from a Dockerfile within a source repo. 
+# Environment variables required:
+#    GITHUB_TOKEN: This is the token that you need to access the github container repository. It needs to be set as a secret within the environment section of the repo.
+#    ORCA_SECURITY_API_TOKEN: This is the API token from the ORCA platform that is needed to run the CLI tool. This also needs to be set within the environment section of the repository.
+#    PROJECT_KEY: Add your own project key here.
+# In order for this action to work, it will need to be associated with a source repository that has a Dockerfile.
+# Also note that it is currently configured to be used on push to a specific branch in addition to pull requests to this branch. 
+
+# Example
+name: Orca container image scanning PR check
+
+on:
+  pull_request:
+    branches: 
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  PROJECT_KEY: image_scan_demo
+  CLI_VERSION: latest
+  ORCA_SECURITY_API_TOKEN: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
+
+jobs:
+  # sample lint,format and unit tests
+  lint-check:
+    name: lint-check
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Lint
+        run: echo "Your linting goes here..."
+
+  format-check:
+    name: format-check
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: format-check
+      run: echo "Your format checking goes here..."
+
+  unit-tests:
+    needs: [lint-check,format-check]
+    name: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Your Unit tests go here..."
+
+  debug-print-event-data:
+    name: debug-print-event-data
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Print event data for debug purposes
+      env:
+        EVENT: ${{ toJSON( github.event ) }}
+      run: echo "$EVENT"
+
+  build-and-scan-image:
+    needs: [unit-tests]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Build Container Image
+        run: docker build --tag ${IMAGE_NAME} .
+  
+      - name: Orca Image Security Scan
+        id: run_orca_cli
+        run: |
+          docker run -u 0 --rm -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/orcasecurity/orca-cli:${CLI_VERSION} --api-token ${ORCA_SECURITY_API_TOKEN} --project-key ${PROJECT_KEY} image scan ${IMAGE_NAME}
