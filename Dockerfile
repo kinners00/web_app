@@ -1,5 +1,6 @@
 FROM nginx:latest
 
-USER demotest
+RUN adduser --disabled-password --gecos '' demo
 
-CMD ["sh"]
+USER demo
+COPY /assets/index.html /usr/share/nginx/html/index.html
