@@ -71,11 +71,15 @@ jobs:
       - name: Build Container Image
         run: docker build --tag ${IMAGE_NAME} .
   
-      - name: Orca Image Security Scan
-        id: run_orca_cli
+        # Run Orca CLI against the previously created container image
+      - name: Orca CLI - Security Scanning
+        env:
+          ORCA_SECURITY_API_TOKEN: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
+          ORCA_SECURITY_CONTAINER_DAEMON_HOST: unix:///var/run/docker.sock
         run: |
-          docker run -u 0 --rm -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/orcasecurity/orca-cli:${CLI_VERSION} --api-token ${ORCA_SECURITY_API_TOKEN} --project-key ${PROJECT_KEY} image scan ${IMAGE_NAME}
-        #continue-on-error: true  
+          set +e
+          curl -sfL 'https://raw.githubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash
+          orca-cli -p ${PROJECT_KEY} image scan ${IMAGE_NAME}
 
   push-to-registry:
     needs: [build-and-scan-image]
