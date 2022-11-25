@@ -79,7 +79,7 @@ jobs:
         run: |
           set +e
           curl -sfL 'https://raw.githubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash
-          orca-cli -p ${PROJECT_KEY} image scan ${IMAGE_NAME} --format sarif,json --output results/
+          orca-cli -p ${PROJECT_KEY} image scan ${IMAGE_NAME} --format sarif --output results/
 
   push-to-registry:
     needs: [build-and-scan-image]
